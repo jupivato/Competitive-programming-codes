@@ -1,58 +1,26 @@
 #include<bits/stdc++.h>
+#define PI 3.14159
+
 using namespace std;
 
 int main()
 {
-    int casos;
-    bool efila = true;
-    bool epilha = true;
-    bool eprioritaria = true;
-
-    while(cin>>casos)
+    double a, b, c, d, media;
+    cin >> a >> b >> c >> d;
+    media = (a* 2 + b * 3 + c * 4 + d) / 10;
+    cout << "Media: " << setprecision(1) << fixed << media << endl;
+    if (media < 5.0) cout << "Aluno reprovado." << endl;
+    else if (media >= 5 && media < 7)
     {
-        queue<int>fila;
-        stack<int>pilha;
-        priority_queue<int>filaprioritaria;
-        efila = true;
-        epilha = true;
-        eprioritaria = true;
-        while(casos--)
-        {
-            int option, num;
-            cin>>option>>num;
-            switch (option)
-            {
-                case 1:
-                    if(efila) fila.push(num);
-                    if(epilha) pilha.push(num);
-                    if(eprioritaria) filaprioritaria.push(num);
-                    break;
-                case 2:
-                    if(efila)
-                    {
-                        if(fila.empty()||fila.front()!=num) efila = false;
-                        else fila.pop();
-                    }
-                    if(epilha)
-                    {
-                        if(pilha.empty() || pilha.top()!=num) epilha = false;
-                        else pilha.pop();
-                    }
-                    if(eprioritaria)
-                    {
-                        if(filaprioritaria.empty() || filaprioritaria.top()!=num) eprioritaria = false;
-                        else filaprioritaria.pop();
-                    }
-                    break;
-            }
-        }
-
-        if(efila && !epilha && !eprioritaria) cout<<"queue"<<endl;
-        else if(!efila && epilha && !eprioritaria) cout<<"stack"<<endl;
-        else if (!efila && !epilha && eprioritaria ) cout<<"priority queue"<<endl;
-        else if(!efila && !epilha && !eprioritaria) cout<<"impossible"<<endl;
-        else cout<<"not sure"<<endl;
+        cout << "Aluno em exame." << endl;
+        double ex, nf;
+        cin >> ex;
+        cout << "Nota do exame: " << ex << endl;
+        nf = (media + ex) / 2;
+        if (nf < 5) cout << "Aluno reprovado." << endl;
+        else cout << "Aluno aprovado." << endl;
+        cout << "Media final: " << setprecision(1) << fixed << nf << endl;
     }
-
+    else cout << "Aluno aprovado." << endl;
     return 0;
 }
